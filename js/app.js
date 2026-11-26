@@ -90,6 +90,7 @@ window.KBC.App = (() => {
             "resultsScore",
             "resultsCorrect",
             "resultsAccuracy",
+            "resultsBreakdownCount",
             "resultsBreakdownList",
             "playAgainBtn",
             "resultsTitleBtn",
@@ -448,6 +449,9 @@ window.KBC.App = (() => {
                 DOM.resultsSubtitle.textContent = State.quiz.quizTitle;
             }
 
+            if (DOM.resultsBreakdownCount) {
+                DOM.resultsBreakdownCount.textContent = `${total} Questions`;
+            }
             if (DOM.resultsBreakdownList) {
                 DOM.resultsBreakdownList.innerHTML = State.quiz.questions
                     .map((q, i) => {

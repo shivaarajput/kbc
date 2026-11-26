@@ -389,8 +389,8 @@
 
         <!-- PAGE 4: RESULTS -->
         <section id="screenResults"
-            class="hidden w-full max-w-5xl max-h-full overflow-y-auto clean-scroll grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch animate-screen">
-            <div class="lg:col-span-6 game-card rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-between text-center gap-4 sm:gap-5">
+            class="hidden w-full max-w-5xl lg:h-full max-h-full overflow-y-auto lg:overflow-hidden clean-scroll grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch animate-screen">
+            <div class="lg:col-span-5 lg:h-full min-h-0 game-card rounded-3xl p-5 sm:p-7 flex flex-col items-center justify-center text-center gap-4 overflow-y-auto clean-scroll">
                 <img src="kbc-logo.png" alt="KBC"
                     class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white p-1.5 object-contain border-2 border-amber-400/80 shrink-0" />
 
@@ -402,7 +402,7 @@
                 </div>
 
                 <!-- KBC Cheque Card -->
-                <div class="w-full kbc-cheque rounded-2xl p-4 sm:p-5 space-y-2">
+                <div class="w-full kbc-cheque rounded-2xl p-4 sm:p-5 space-y-2 shrink-0">
                     <div class="flex items-center justify-between text-[10px] uppercase tracking-widest text-amber-300/85 font-extrabold">
                         <span>KBC Prize Cheque</span>
                         <span id="resultsPlayerName" class="text-blue-200">Contestant</span>
@@ -413,7 +413,7 @@
                     </div>
                 </div>
 
-                <div class="w-full grid grid-cols-3 gap-2">
+                <div class="w-full grid grid-cols-3 gap-2 shrink-0">
                     <div class="rounded-2xl bg-slate-950/80 border border-blue-400/25 p-2.5">
                         <div class="text-[10px] text-blue-200/70 font-semibold">Score</div>
                         <div id="resultsScore" class="text-sm sm:text-base font-extrabold text-white tabular-nums mt-0.5">0</div>
@@ -421,7 +421,7 @@
                     <div class="rounded-2xl bg-slate-950/80 border border-blue-400/25 p-2.5">
                         <div class="text-[10px] text-blue-200/70 font-semibold">Correct</div>
                         <div id="resultsCorrect"
-                            class="text-sm sm:text-base font-extrabold text-emerald-400 tabular-nums mt-0.5">0/10</div>
+                            class="text-sm sm:text-base font-extrabold text-emerald-400 tabular-nums mt-0.5">0/16</div>
                     </div>
                     <div class="rounded-2xl bg-slate-950/80 border border-blue-400/25 p-2.5">
                         <div class="text-[10px] text-blue-200/70 font-semibold">Accuracy</div>
@@ -430,26 +430,27 @@
                     </div>
                 </div>
 
-                <div class="w-full flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+                <div class="w-full flex flex-col sm:flex-row gap-2.5 sm:gap-3 shrink-0">
                     <button id="playAgainBtn" type="button"
-                        class="flex-1 min-h-[48px] sm:min-h-[52px] px-4 py-3 rounded-2xl btn-gold-3d font-display text-xs sm:text-sm font-black tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer">
+                        class="flex-1 min-h-[48px] px-4 py-3 rounded-2xl btn-gold-3d font-display text-xs sm:text-sm font-black tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer">
                         <i data-lucide="rotate-ccw" class="w-4 h-4 shrink-0"></i>
                         <span>Play Again</span>
                     </button>
                     <button id="resultsTitleBtn" type="button"
-                        class="flex-1 min-h-[48px] sm:min-h-[52px] px-4 py-3 rounded-2xl btn-navy-3d font-display text-xs sm:text-sm font-extrabold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer">
+                        class="flex-1 min-h-[48px] px-4 py-3 rounded-2xl btn-navy-3d font-display text-xs sm:text-sm font-extrabold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer">
                         <i data-lucide="home" class="w-4 h-4 text-amber-300 shrink-0"></i>
                         <span>Home</span>
                     </button>
                 </div>
             </div>
 
-            <aside class="lg:col-span-6 game-card-blue rounded-3xl p-5 flex flex-col justify-between gap-3 overflow-hidden max-h-[60dvh] lg:max-h-full">
-                <div class="flex items-center justify-between pb-2.5 border-b border-amber-400/25">
+            <aside class="lg:col-span-7 lg:h-full min-h-0 game-card-blue rounded-3xl p-5 flex flex-col gap-3 overflow-hidden max-h-[55dvh] lg:max-h-full">
+                <div class="shrink-0 flex items-center justify-between pb-2.5 border-b border-amber-400/25">
                     <div class="flex items-center gap-2">
                         <i data-lucide="list-checks" class="w-4 h-4 text-amber-300"></i>
                         <span class="font-display text-xs font-black tracking-wider uppercase text-amber-300">Round Breakdown</span>
                     </div>
+                    <span id="resultsBreakdownCount" class="text-[11px] font-bold text-blue-200/75">16 Questions</span>
                 </div>
                 <div id="resultsBreakdownList" class="flex-1 min-h-0 overflow-y-auto clean-scroll space-y-2 pr-1"></div>
             </aside>
