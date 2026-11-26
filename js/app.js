@@ -1243,15 +1243,26 @@ window.KBC.App = (() => {
             Screens.showSettings();
         });
 
+        function enterFullscreenOnStart() {
+            try {
+                if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen().catch(() => { });
+                    if (DOM.settingsFullscreenLabel) DOM.settingsFullscreenLabel.textContent = "Exit Fullscreen";
+                }
+            } catch (_) { }
+        }
+
         // Screen 1: Title
         on(DOM.startNewGameBtn, "click", () => {
             AudioEngine.ensureContext();
             AudioEngine.click();
+            enterFullscreenOnStart();
             Screens.showLobby();
         });
         on(DOM.resumeGameBtn, "click", () => {
             AudioEngine.ensureContext();
             AudioEngine.click();
+            enterFullscreenOnStart();
             Gameplay.resumeRun();
         });
         on(DOM.titleUploadBtn, "click", () => {
@@ -1273,6 +1284,7 @@ window.KBC.App = (() => {
         on(DOM.lobbyEnterHotSeatBtn, "click", () => {
             AudioEngine.ensureContext();
             AudioEngine.click();
+            enterFullscreenOnStart();
             Gameplay.startNewRun();
         });
         on(DOM.lobbyBackBtn, "click", () => {
@@ -1283,6 +1295,7 @@ window.KBC.App = (() => {
             if (e.key === "Enter") {
                 e.preventDefault();
                 AudioEngine.ensureContext();
+                enterFullscreenOnStart();
                 Gameplay.startNewRun();
             }
         });
