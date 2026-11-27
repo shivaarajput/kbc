@@ -810,11 +810,9 @@ window.KBC.App = (() => {
                     DOM.answerStatusBadge.className = "text-xs sm:text-sm font-extrabold text-emerald-300 leading-snug break-words";
                 } else {
                     rt.status = "wrong";
-                    const safeFallback = StateMgr.getGuaranteedSafeAmount();
-                    State.bankedPrize = safeFallback;
                     AudioEngine.wrong();
                     showFlash("Galat Jawaab", `Correct Answer: ${q.correctAnswer}`, "danger", "x-circle");
-                    DOM.answerStatusBadge.textContent = `Wrong! Safe Prize: ${formatINR(safeFallback)}`;
+                    DOM.answerStatusBadge.textContent = `Wrong! Answer: ${q.correctAnswer}`;
                     DOM.answerStatusBadge.className = "text-xs sm:text-sm font-extrabold text-rose-300 leading-snug break-words";
                 }
 
@@ -844,8 +842,6 @@ window.KBC.App = (() => {
             }
 
             rt.status = "timeout";
-            const safeFallback = StateMgr.getGuaranteedSafeAmount();
-            State.bankedPrize = safeFallback;
             AudioEngine.stopMusic();
             AudioEngine.timeout();
 
@@ -875,22 +871,17 @@ window.KBC.App = (() => {
         goNextStep() {
             AudioEngine.click();
             const total = State.quiz.questions.length;
-            const rt = this.getRuntime(State.currentIdx);
-
-            if (rt.status === "wrong" || rt.status === "timeout") {
-                State.isFinished = true;
-                State.hasActiveRun = false;
-                StateMgr.clearSavedGameProgress();
-                Screens.showResults("ended");
-                return;
-            }
 
             if (State.currentIdx >= total - 1) {
                 State.isFinished = true;
                 State.hasActiveRun = false;
                 StateMgr.clearSavedGameProgress();
-                AudioEngine.grandWin();
-                Screens.showResults("won");
+                if (State.score === total) {
+                    AudioEngine.grandWin();
+                    Screens.showResults("won");
+                } else {
+                    Screens.showResults("ended");
+                }
                 return;
             }
 
